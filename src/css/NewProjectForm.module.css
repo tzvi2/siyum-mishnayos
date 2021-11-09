@@ -1,0 +1,98 @@
+form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5%;
+    font-size: 4vh;
+    padding: 5% 2%;
+    border: 2px solid var(--shade5);
+    background: rgba(61,58,75,1);
+}
+
+h4 {
+    margin: 0;
+    margin-bottom: 5%;
+    text-align: center;
+    color: wheat;
+    font-weight: 400;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(255, 255, 255);
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+input, select, .dropdown {
+    font-size: 3.5vh;
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    margin: 2% 0;
+}
+
+.sedarimDropdown {
+    padding-left: 1.5%;
+}
+
+input[type=text] {
+    box-sizing: border-box;
+    /* padding-left: 1.5%; */
+}
+
+p {
+    font-size: 3.5vh;
+    margin: 0;
+    text-align: end;
+    font-weight: 200;
+    letter-spacing: 1px;
+    color: rgb(0, 0, 0);
+}
+
+.error {
+    color: rgb(238, 171, 197)
+}
+
+ul {
+    margin: 0;
+    list-style: none;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 0;
+}
+
+.sedarimList {
+    margin-left: 10%;
+}
+
+
+.full {
+    width: 100%;
+}
+
+.half {
+    width: 48%;
+}
+
+.dark {
+    color: var(--shade5);
+    background: wheat;
+}
+
+.light {
+    background-color: rgb(239, 239, 239);
+    color: var(--shade5);
+}
+
+.viewBtn {
+    color: var(--shade5);
+    background: wheat;
+}
+
+.soloBtn {
+    justify-self: center;
+}
