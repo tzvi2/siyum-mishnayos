@@ -14,14 +14,17 @@ import { useDBcontext } from '../contexts/DBcontext'
 let selectedSedarim = ["Zeraim"]
 
 function NewProjectForm() {
+
+    console.log("NewProjectForm")
     
     const [title, setTitle] = useState("")
     const [titleError, setTitleError] = useState(false)
     const [timePeriod, setTimePeriod] = useState("1 week")
     const [stage, setStage] = useState(1)
-    const [sedarim, setSedarim] = useState([shas[0]])
+    //const [sedarim, setSedarim] = useState({Zeraim: shas.Zeraim})
+    //let sedarim = {Zeraim: shas.Zeraim}
     
-    const {currentProject, saveProject, setCurrentProject, currentId, setCurrentId, currentProjectLink} = useDBcontext()
+    const {saveProject, setCurrentProject, currentProjectLink, sedarim, currentId} = useDBcontext()
     
     const newProject = {
         title: title,
@@ -29,38 +32,30 @@ function NewProjectForm() {
         sedarim: sedarim
     }
 
+
+
     function handleSederChange(e) {
 
         let seder = e.target.value
 
+        // if - else for UI only
         if (selectedSedarim.includes(seder)) {
             selectedSedarim.splice(selectedSedarim.indexOf(seder), 1)
-            
         } else {
             selectedSedarim.push(seder)
         }
 
-        for (let obj of shas) {
-            if (obj.hasOwnProperty(seder)) {
-                if (sedarim.includes(obj)) {
-                    setSedarim(sedarim.filter(elem => elem !== obj))
-                    //console.log('sedarim had selected seder, its been removed')
-                } else {
-                    setSedarim([...sedarim, obj])
-                    //console.log("sedarim didn't have the selected seder, its been added")
-                }
-            }
+        // (newProject.)sedarim should remain an object.
+        
+        // if - else to update sedarim object based on selected seders
+        if (sedarim[seder]) {
+            delete sedarim[seder]
+            //console.log('deleted from sedarim', sedarim)
+        } else {
+            sedarim[seder] = shas[seder]
+            //console.log('added to sedarim', sedarim)
         }
     }
-
-    useEffect(() => {
-        //console.log('sedarim:', sedarim)
-    }, [sedarim])
-
-    useEffect(() => {
-        //console.log('stage: ',stage, sedarim)
-        //console.log('stage: ', stage, "newProject: ", newProject)
-    }, [stage])
 
     const addProject = async (e) => {
         e.preventDefault()
@@ -70,12 +65,8 @@ function NewProjectForm() {
         }
 
         try {
+            //console.log('currPro', currentProject)
             await saveProject(newProject)
-            //localStorage.setItem('currentProjID', newDoc)
-            //const newDoc = await addDoc(collection(db, "projects"), newProject)
-            //console.log("new document id: ", newDoc.id)
-            //console.log('newproject', newProject)
-            //setCurrentId(newDoc.id)
             setCurrentProject(newProject)
             setStage(stage + 1)
         } catch (error) {
@@ -84,7 +75,9 @@ function NewProjectForm() {
     }
 
     return (
+        <div className={styles.container}>
         <form onSubmit={e => addProject(e)}>
+            
             {stage === 1 &&<>
             <h4>Create Project</h4>
             {titleError && <p className={styles.error}>Please enter a title.</p>}
@@ -137,19 +130,16 @@ function NewProjectForm() {
             <h4>Your project was created.</h4>
             <label>Title: {title}</label>
             <label>Time Period: {timePeriod}</label>
-            <label>Sedarim: </label>
-            {selectedSedarim.map((seder, i) => (
-                <label className={styles.sedarimList} key={i}>{seder}</label>
-            ))}
-            <p>Your link: {currentProjectLink}</p>
-            
-            {/* <div className={styles.row}> */}
-                <Link className={styles.soloBtn} to="/viewproject"><input className={styles.viewBtn} type="button" value="View"></input></Link>
-            {/* </div> */}
+            <label>Sedarim: <input readOnly type="text" value={selectedSedarim}></input></label>
             
             
+            <textarea readOnly id="link" value={`Your link: ${currentProjectLink}`}></textarea>
+        
+            <Link className={styles.soloBtn} to={`/viewproject/${currentId}`}><input className={styles.viewBtn} type="button" value="View"></input></Link>
+           
             </>}
         </form>
+        </div>
     )
 }
 

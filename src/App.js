@@ -2,48 +2,24 @@ import React, {useState} from 'react'
 import './App.css';
 import NewProjectForm from './components/NewProjectForm'
 import RecentProjectFeed from './components/RecentProjectFeed'
+import Header from './components/Header'
 import ViewProject from '../src/components/ViewProject'
+import {Link, Routes, Route} from 'react-router-dom'
+import Gemara from './components/Gemara';
+import TextAnimation from './components/TextAnimation';
 
 function App() {
-  const [createNewProject, setCreateNewProject] = useState(false)
-  const clear = () => {
-    setCreateNewProject(false)
-  }
+  console.log("App")
   return (
-    <div className="App">
-      <h1 onClick={() => clear()}>Siyum Mishnayos</h1>
-      <div id="flame"></div>
-      {!createNewProject ?
-      <>
-      <div className="container">
-        <div id="bookDiv">
-          <div id="book1">
-            <span>
-              &#1502;&#1488;&#1497;&#1502;&#1514;&#1497;
-              <hr className="line"></hr>
-              <hr className="line"></hr>
-              <hr className="line"></hr>
-              <hr className="line"></hr>
-            </span>
-          </div>
-          <div id="book2">
-            <span>
-              &#1502;&#1488;&#1497;&#1502;&#1514;&#1497;
-              <hr className="line"></hr>
-              <hr className="line"></hr>
-              <hr className="line"></hr>
-              <hr className="line"></hr>
-            </span>
-          </div>
-        </div>
-        <input type="button" value="New Project" onClick={() => setCreateNewProject(true)}></input>
-        {/* <input type="button" value="View All"></input> */}
-      </div>
+    // <div className="App">
+    //   <TextAnimation />
+    //   <div id="flame"></div>
+    //   <div className="container">
+    //     <Gemara />
+        <Link className="lightBtn solo" to="newproject">New Project</Link>
+      /* </div>
       <RecentProjectFeed />
-      </>
-      : <NewProjectForm />}
-     
-    </div>
+    </div> */
   );
 }
 

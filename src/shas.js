@@ -1,102 +1,6 @@
-// of course they're all True.
-// export const shass = [
-//     {
-//     seder: "Zeraim",
-//     masechtos: {
-//         Berachos: false,
-//         Peah: false,
-//         Demai: false,
-//         Kelaim: false,
-//         Sheviis: false,	
-//         Terumot: false,
-//         Maaseros: false,
-//         Maaser_Sheni: false,
-//         Challah: false,
-//         Orlah: false,
-//         Bikkurim: false,
-//         }
-//     },
-//     {
-//     seder: "Moed",
-//     masechtos: {
-//         Shabbat: false,	
-//         Eruvin: false,	
-//         Pesachim: false,	
-//         Shekalim: false,	
-//         Rosh_Hashanah: false,	
-//         Yoma: false,	
-//         Sukkah: false,	
-//         Beitza: false,
-//         Taanis: false,
-//         Megillah: false,	
-//         Moed_Katan: false,	
-//         Chagigah: false,
-//         }
-//     },
-//     {
-//     seder: "Nashim", 
-//     masechtos: {
-//         Yevamos: false,
-//         Kesubos: false,
-//         Nedarim: false,
-//         Nazir: false,
-//         Sotah: false,
-//         Gittin: false,
-//         Kedushin: false,
-//         }
-//     },
-//     {
-//     seder: "Nezikin",
-//     masechtos: {
-//         Bava_Kama: false,
-//         Bava_Metziah: false,
-//         Bava_Basra: false,
-//         Sanhedrin: false,
-//         Makkos: false,
-//         Shevuos: false,
-//         Eduyos: false,
-//         Avodah_Zara: false,
-//         Avos: false,
-//         Horayos: false,
-//         }
-//     },
-//     {
-//     seder: "Kadshim",
-//     masechtos: {
-//         Zevachim: false,
-//         Menachos: false,
-//         Chullin: false,
-//         Bechoros: false,
-//         Arachin: false,
-//         Temurah: false,
-//         Kerisos: false,
-//         Meilah: false,
-//         Tamid: false,
-//         Middos: false,
-//         Kinnim: false
-//         }
-//     },
-//     {
-//     seder: "Taharos",
-//     masechtos: {
-//         Keilim: false,
-//         Oholos: false,
-//         Negaim: false,
-//         Parah: false,
-//         Taharos: false,
-//         Mikvaos: false,
-//         Niddah: false,
-//         Machshirim: false,
-//         Zavim: false,
-//         Tevul_Yom: false,
-//         Yadayim: false,
-//         Uktzim: false,
-//         }
-//     },
-// ]
-
-export const shas = [
-    {Zeraim: {
+console.log("shas")
+export const shas = {
+    Zeraim: {
         Berachos: {
             complete: false,
             learner: null
@@ -141,9 +45,8 @@ export const shas = [
             complete: false,
             learner: null
         },
-        }
     },
-    {Moed: {
+    Moed: {
         Shabbat: {
             complete: false,
             learner: null
@@ -192,9 +95,8 @@ export const shas = [
             complete: false,
             learner: null
         },
-        }
     },
-     {Nashim: {
+    Nashim: {
         Yevamos: {
             complete: false,
             learner: null
@@ -223,9 +125,8 @@ export const shas = [
             complete: false,
             learner: null
         },
-        }
     },
-     {Nezikin: {
+    Nezikin: {
         Bava_Kama: {
             complete: false,
             learner: null
@@ -266,10 +167,8 @@ export const shas = [
             complete: false,
             learner: null
         },
-        }
     },
-    
-    {Kadshim: {
+    Kadshim: {
         Zevachim: {
             complete: false,
             learner: null
@@ -314,9 +213,8 @@ export const shas = [
             complete: false,
             learner: null
         }
-        }
     },
-    {Taharos: {
+    Taharos: {
         Keilim: {
             complete: false,
             learner: null
@@ -365,6 +263,5 @@ export const shas = [
             complete: false,
             learner: null
         },
-        }
     },
-]
+}

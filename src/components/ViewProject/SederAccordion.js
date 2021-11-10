@@ -20,9 +20,9 @@ function SederAccordion(props) {
                 return (
                     <MasechtaCard
                         key={i}
-                        masechta={masechta.masechta}
-                        complete={masechta.data.complete}
-                        learner={masechta.data.learner}
+                        masechta={masechta?.masechta}
+                        complete={masechta?.data?.complete}
+                        learner={masechta?.data?.learner}
                         seder={props.seder}
                     />
                 )
