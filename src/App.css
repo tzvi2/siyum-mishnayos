@@ -36,6 +36,7 @@ h1 {
   display: flex;
   height: 16vh;
   margin-bottom: 5%;
+  font-family: 'Oswald', sans-serif;
 }
 
 #book1 {

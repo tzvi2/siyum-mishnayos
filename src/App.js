@@ -11,15 +11,15 @@ import TextAnimation from './components/TextAnimation';
 function App() {
   console.log("App")
   return (
-    // <div className="App">
-    //   <TextAnimation />
-    //   <div id="flame"></div>
-    //   <div className="container">
-    //     <Gemara />
+    <div className="App">
+      <TextAnimation />
+      <div id="flame"></div>
+      <div className="container">
+        <Gemara />
         <Link className="lightBtn solo" to="newproject">New Project</Link>
-      /* </div>
-      <RecentProjectFeed />
-    </div> */
+      </div>
+      {/* <RecentProjectFeed /> */}
+    </div> 
   );
 }
 

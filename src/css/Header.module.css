@@ -1,3 +1,10 @@
+.header {
+    background: linear-gradient(to right, yellow, pink, green);
+    
+}
+
 h1 {
     margin: 4%;
+    text-align: start;
+    
 }

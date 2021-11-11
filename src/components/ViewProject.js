@@ -3,6 +3,7 @@ import styles from '../css/ViewProject.module.css'
 import SederAccordion from '../components/ViewProject/SederAccordion'
 //import {shas} from '../shas'
 import {useDBcontext} from '../contexts/DBcontext'
+import QRCode from 'qrcode.react'
 import {useHistory, useParams, Link} from 'react-router-dom'
 
 
@@ -13,7 +14,7 @@ function ViewProject() {
     
     let params = useParams()
 
-    const {getProject, currentProject, setCurrentProject, setCurrentId, signUp, currentId} = useDBcontext()
+    const {getProject, currentProject, setCurrentProject, setCurrentId, signUp, currentId, currentProjectLink} = useDBcontext()
 
     const sederStrs = []
     const masechtaObjs = []
@@ -54,6 +55,7 @@ function ViewProject() {
             <h2>Title: Shteig</h2>
             <h2>Duration: 1 month</h2> 
         </div>
+
         <div className={styles.container}>
             {currentProject == null ? <div>loading</div> :
             Object.keys(currentProject.sedarim).map((seder, i) => {
@@ -65,6 +67,11 @@ function ViewProject() {
                     <SederAccordion key={i} seder={seder} masechtos={arr} />
                 )
             })}
+        </div>
+
+        <div className={styles.container}>
+            <label>Project QR code:</label>
+            <QRCode value={currentProjectLink} />
         </div>
         </>
     )

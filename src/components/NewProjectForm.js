@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import styles from '../css/NewProjectForm.module.css'
 import ViewProject from '../components/ViewProject'
 import CreateProject from './NewProjectForm/CreateProject'
@@ -8,6 +8,8 @@ import {doc, setDoc, collection, addDoc} from 'firebase/firestore'
 import {shas} from '../shas'
 import {Route, Routes, Link, useHistory} from 'react-router-dom'
 import { useDBcontext } from '../contexts/DBcontext'
+import QRCode from 'qrcode.react'
+import qrcode from 'qrcode.react'
 
 
 
@@ -21,6 +23,9 @@ function NewProjectForm() {
     const [titleError, setTitleError] = useState(false)
     const [timePeriod, setTimePeriod] = useState("1 week")
     const [stage, setStage] = useState(1)
+
+    //const qrRef = useRef(null)
+
     //const [sedarim, setSedarim] = useState({Zeraim: shas.Zeraim})
     //let sedarim = {Zeraim: shas.Zeraim}
     
@@ -29,10 +34,9 @@ function NewProjectForm() {
     const newProject = {
         title: title,
         timePeriod: timePeriod,
-        sedarim: sedarim
+        sedarim: sedarim,
+        link: currentProjectLink
     }
-
-
 
     function handleSederChange(e) {
 
@@ -63,6 +67,10 @@ function NewProjectForm() {
             setTitleError(true)
             return
         }
+
+        
+        // console.log('qrcoderef.current', qrRef.current)
+        // newProject.QRcode = qrRef.current
 
         try {
             //console.log('currPro', currentProject)
@@ -132,8 +140,11 @@ function NewProjectForm() {
             <label>Time Period: {timePeriod}</label>
             <label>Sedarim: <input readOnly type="text" value={selectedSedarim}></input></label>
             
-            
-            <textarea readOnly id="link" value={`Your link: ${currentProjectLink}`}></textarea>
+            <label>Your project link:</label>
+            <textarea readOnly id="link" value={`${currentProjectLink}`}></textarea>
+
+            <label>Your project's shareable QR code:</label>
+            <QRCode value={currentProjectLink} />
         
             <Link className={styles.soloBtn} to={`/viewproject/${currentId}`}><input className={styles.viewBtn} type="button" value="View"></input></Link>
            
