@@ -1,10 +1,11 @@
 import React from 'react'
-import styles from '../css/Gemara.module.css'
+import styles from '../css/Mishna.module.css'
+import {Link} from 'react-router-dom'
 
-function Gemara() {
+function Mishna() {
     return (
-        <div id="bookDiv" className={styles.gemara}>
-          <div id="book1">
+        <div className={styles.mishna}>
+          <div className={styles.book1}>
             <span>
               &#1502;&#1488;&#1497;&#1502;&#1514;&#1497;
               <hr className="line"></hr>
@@ -13,7 +14,7 @@ function Gemara() {
               <hr className="line"></hr>
             </span>
           </div>
-          <div id="book2">
+          <div className={styles.book2}>
             <span>
               &#1502;&#1488;&#1497;&#1502;&#1514;&#1497;
               <hr className="line"></hr>
@@ -26,4 +27,4 @@ function Gemara() {
     )
 }
 
-export default Gemara
+export default Mishna

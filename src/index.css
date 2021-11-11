@@ -2,17 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Oswald:wght@200;300;400;500&display=swap');
 
 body, html {
-  --shade1: #e3dfff;
-  --shade2: #d3c0cd;
-  --shade3: #b19994;
-  --shade4: #937666;
-  --shade5: #3d3a4b;
+  --shade1: #f1faee;
+  --shade2: #a8dadc;
+  --shade3: #457b9d;
+  --shade4: #1d3557;
+  --shade5: #e63946;
 }
 
 body, html, #root {
-  height: 100%;
   font-family: 'Open Sans', sans-serif;
   margin: 0;
-  color: #3d3a4b;
-  overflow-Y: hidden;
+  height: 100%;
+}
+
+#root {
+  background: linear-gradient(225deg, var(--shade1), var(--shade2), var(--shade3));
 }

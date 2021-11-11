@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import styles from '../css/ViewProject.module.css'
 import SederAccordion from '../components/ViewProject/SederAccordion'
+import Header from '../components/Header'
 //import {shas} from '../shas'
 import {useDBcontext} from '../contexts/DBcontext'
 import QRCode from 'qrcode.react'
@@ -50,7 +51,7 @@ function ViewProject() {
         
     return (
         <>
-        
+        <Header />
         <div className={styles.container}>
             <h2>Title: Shteig</h2>
             <h2>Duration: 1 month</h2> 

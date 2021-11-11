@@ -1,0 +1,31 @@
+.mishna {
+    font-size: 5vh;
+    display: flex;
+    font-family: fantasy;
+    margin-top: 30%;
+    color: var(--shade4);
+  }
+  
+  .book1 {
+    display: flex;
+    justify-content: center;
+    width: 18vh;
+    background: rgb(247, 246, 244);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 3px;
+    border: 1px solid var(--shade4);
+    border-left: 2.5px solid var(--shade4);
+  }
+  
+  .book2 {
+    display: flex;
+    justify-content: center;
+    width: 18vh;
+    background: rgb(247, 246, 244);
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 3px;
+    border: 1px solid var(--shade4);
+    border-right: 2.5px solid var(--shade4);
+  }
+
+ 

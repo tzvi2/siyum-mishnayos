@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import {db} from '../firebaseConfig'
-import {setDoc, getDoc, doc, addDoc, collection, where, updateDoc, query, FieldPath} from 'firebase/firestore'
+import {setDoc, getDoc, doc, addDoc, collection, where, updateDoc, query, FieldPath, Timestamp, serverTimestamp} from 'firebase/firestore'
 import {shas} from '../shas'
 import {useParams} from 'react-router-dom'
 
@@ -26,10 +26,29 @@ export function DBprovider({children}) {
     
 
     const saveProject = async (proj) => {  
-        const newDoc = await addDoc(collection(db, "projects"), proj)
-        setCurrentId(newDoc.id)
-        setCurrentProjectLink(`http://localhost:3000/viewprojects:${newDoc.id}`)
-        return newDoc
+        console.log('saving project, newProject', proj)
+        const newDocToSave = await addDoc(collection(db, "projects"), {
+            ...proj,
+            createdAt: serverTimestamp()
+        })
+        const update = await updateDoc(newDocToSave, {
+            "link" : `http://localhost:3000/viewprojects:${newDocToSave.id}`
+        })
+        const savedNewDoc = await getDoc(newDocToSave)
+        if (savedNewDoc.exists()) {
+            return savedNewDoc.data()
+        } else {
+            return console.log("error getting new saved doc")
+        }
+    }
+
+    const saveProjectLink = async (id) => {
+        console.log('saving project link. id:', id)
+        const projRef = doc(db, "projects", id)
+        const update = await updateDoc(projRef, {
+            "link" : `http://localhost:3000/viewprojects:${id}`
+        })
+        return update
     }
 
     const getProject = async (id) => {
@@ -79,11 +98,14 @@ export function DBprovider({children}) {
         saveProject,
         getProject,
         currentProjectLink,
+        setCurrentProjectLink,
         signUp,
         sedarim,
         currentProject,
         setCurrentProject,
-        setProject
+        setProject,
+        saveProjectLink,
+        getProject
     }
 
     return (

@@ -6,10 +6,10 @@ import NewProjectForm from './NewProjectForm'
 
 function Header() {
     return (
-        <div className={styles.container}>
-          <Link to="/"><h1>Siyum Mishnayos</h1></Link>
-        </div>
-    )
+      <div className={styles.header}>
+        <Link to="/"><h1>Siyum Mishnayos</h1></Link>  
+     </div>
+  )
 }
 
 export default Header

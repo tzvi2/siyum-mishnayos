@@ -1,6 +1,5 @@
 .App {
   height: 100%;
-  margin: 0 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,105 +7,35 @@
 
 a {
   text-decoration: none;
-  text-align: center;
-}
-
-h1 {
-  color: var(--shade5);
-  padding: 0;
-  font-weight: 400;
-  align-self: flex-start;
+  color: black;
 }
 
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin: 5% 0;
-}
-
-.container > input {
-  margin: 2% 0;
-  height: 6vh;
-}
-
-#bookDiv {
-  font-size: 3.5vh;
-  display: flex;
-  height: 16vh;
-  margin-bottom: 5%;
-  font-family: 'Oswald', sans-serif;
-}
-
-#book1 {
-  display: flex;
   justify-content: center;
-  width: 14vh;
-  background: rgb(230, 228, 222);
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 3px;
-  border: 1px solid var(--shade5);
-  border-left: 2.5px solid var(--shade5);
-}
-
-#book2 {
-  display: flex;
-  justify-content: center;
-  width: 14vh;
-  background: rgb(224, 223, 218);
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 3px;
-  border: 1px solid var(--shade5);
-  border-right: 2.5px solid var(--shade5);
-}
-
-#flame {
-  align-self: flex-end;
-  position: fixed;
-  z-index: -1;
-  width: 24vh;
-  height: 100vh;
-  background: linear-gradient(15deg,rgba(201, 89, 89, 1), rgba(245, 245, 5, 0.3), rgba(248, 163, 5, 0.3), rgba(224, 56, 56, 0.9));
-  border-radius: 50%;
-  animation-name: sway;
-  animation-duration: 6s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-}
-
-.full {
   width: 100%;
+  margin-top: 5%;
 }
 
-.half {
-  width: 48%;
-}
-
-.solo {
-  width: 28vh;
-  margin: 5% 0;
-}
-
-.dark {
-  color: var(--shade5);
-  background: wheat;
-}
-
-.lightBtn {
-  background-color: rgb(239, 239, 239);
-  color: var(--shade5);
+#newProjLink {
+  display: flex;
+  justify-content: space-between;
   font-size: 3.5vh;
-  padding: 1%;
-  border: 1px solid black;
+  text-align: center;
+  background: white;
+  border: 1px solid var(--shade4);
+  padding: 1% 2%;
+  width: 50%;
   border-radius: 5px;
+  color: var(--shade4);
+  font-weight: 500;
 }
 
-@keyframes sway {
-  0%{
-    transform: translateY(15%) skewX(1deg);
-  }
-  100%{
-    transform: translateY(13%) skewX(-2deg);
-  }
+#newProjLink:active {
+  color: var(--shade3);
+}
+
+#rightarrow {
+  width: 32px;
+  height: 32px;
 }

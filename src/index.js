@@ -14,7 +14,6 @@ ReactDOM.render(
   <DBprovider>
     <BrowserRouter>
       <React.StrictMode>
-      <Header />
       <Routes>
         <Route path='/' element={<App />} />
         <Route path='/newproject' element={<NewProjectForm />} />
