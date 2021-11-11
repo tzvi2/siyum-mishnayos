@@ -1,0 +1,61 @@
+form {
+    width: 100%;
+    color: var(--shade4);
+}
+
+input, select, textarea {
+    color: var(--shade4);
+    width: 45%;
+    font-size: 4vh;
+    font-family: 'Open Sans', sans-serif;
+}
+
+input[type="text"] {
+    border: 1px solid grey;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+input[type="button"], input[type="submit"] {
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+.info {
+    background: transparent;
+    border: 1px solid var(--shade4);
+}
+
+.formSection {
+    display: flex;
+    flex-direction: column;
+    font-size: 4vh;
+    border: 1px solid var(--shade4);
+    padding: 2.5%;
+    border-radius: 5px;
+}
+
+.formRow {
+    display: flex;
+    justify-content: space-between;
+    margin: 2% 0;
+}
+
+.centered {
+    align-self: center;
+    width: 75%;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+.half {
+    width: 48%;
+}
+
+.error {
+    align-self: flex-end;
+    margin: 2% 0;
+    color: var(--shade5);
+}
+

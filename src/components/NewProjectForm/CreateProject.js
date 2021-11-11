@@ -16,35 +16,34 @@ function CreateProject(props) {
 
         let seder = e.target.value
 
-        // if - else for UI only
+        // for UI only
         if (props.selectedSedarim.includes(seder)) {
             props.selectedSedarim.splice(props.selectedSedarim.indexOf(seder), 1)
         } else {
             props.selectedSedarim.push(seder)
         }
 
-        // (newProject.)sedarim should remain an object.
         
-        // if - else to update sedarim object based on selected seders
+        //to update sedarim object based on selected seders
         if (sedarim[seder]) {
             delete sedarim[seder]
-            //console.log('deleted from sedarim', sedarim)
+
         } else {
             sedarim[seder] = shas[seder]
-            //console.log('added to sedarim', sedarim)
+
         }
     }
 
     return (
         <>
-        <h4>Create Project</h4>
+        <div className={styles.formSection}>
             {titleError && <p className={styles.error}>Please enter a title.</p>}
-            <label>
+            <label className={styles.formRow}>
                 Title:
                 <input type="text" value={props.title} onChange={e => {props.setTitle(e.target.value); setTitleError(false)}}></input>
             </label>
 
-            <label>
+            <label className={styles.formRow}>
                 Time Period:
                 <select value={props.timePeriod} onChange={e => props.setTimePeriod(e.target.value)}>
                     <option value="1 week">1 Week</option>
@@ -52,8 +51,8 @@ function CreateProject(props) {
                     <option value="1 year">1 Year</option>
                 </select>
             </label>
-
-            <label>
+            
+            <label className={styles.formRow}>
                 Sedarim:
                 <select className={styles.sedarimDropdown} multiple={true} value={props.selectedSedarim} onChange={e => handleSederChange(e)}>
                     <option value="Zeraim">Zeraim</option>
@@ -65,8 +64,9 @@ function CreateProject(props) {
                 </select>
             </label>
             
-            <input className={`${styles.dark} ${styles.full}`} readOnly type="button" value="Next" onClick={() => {if(!props.title) {setTitleError(true); return} props.setStage(props.stage + 1)}}></input>
-            </>
+            <input className={styles.centered} readOnly type="button" value="Next" onClick={() => {if(!props.title) {setTitleError(true); return} props.setStage(props.stage + 1)}}></input>
+        </div>
+        </>
     )
 }
 

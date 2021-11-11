@@ -48,9 +48,11 @@ function NewProjectForm() {
         
         <div className="App">
             <Header />
+            <div className="container">
             <form onSubmit={e => addProject(e)}>
 
-                {stage === 1 &&
+                {stage === 1 && <>
+                <h2>Create Project</h2>
                 <CreateProject
                     title={title}
                     setTitle={setTitle}
@@ -60,22 +62,28 @@ function NewProjectForm() {
                     setStage={setStage}
                     newProject={newProject}
                     selectedSedarim={selectedSedarim}
-                />}
+                />
+                </>}
     
-                {stage === 2 &&
+                {stage === 2 && <>
+                <h2>Review Project</h2>
                 <ReviewProject 
                     title={title}
                     timePeriod={timePeriod}
                     selectedSedarim={selectedSedarim}
                     stage={stage}
                     setStage={setStage}
-                />}
+                />
+                </>}
 
-                {stage === 3 &&
+                {stage === 3 && <>
+                <h2>Your project was created.</h2>
                 <Confirmation 
                     selectedSedarim={selectedSedarim}
-                />}
+                />
+                </>}
             </form>
+            </div>
         </div>
         
     )

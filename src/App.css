@@ -2,7 +2,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 
 a {
@@ -13,22 +13,20 @@ a {
 .container {
   display: flex;
   justify-content: center;
-  width: 100%;
-  margin-top: 5%;
+  margin: 5%;
 }
 
 #newProjLink {
   display: flex;
   justify-content: space-between;
-  font-size: 3.5vh;
-  text-align: center;
+  font-size: 1.5em;
   background: white;
   border: 1px solid var(--shade4);
   padding: 1% 2%;
-  width: 50%;
   border-radius: 5px;
   color: var(--shade4);
   font-weight: 500;
+  width: 55%;
 }
 
 #newProjLink:active {
