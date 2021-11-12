@@ -73,7 +73,7 @@ function ViewProject() {
 
         <div className={`${styles.flexColumn} ${styles.bottom}`}>
             <label className={`${styles.qrCol} ${styles.qrLabel}`}>Project QR code:</label>
-            <QRCode className={styles.qrCol} value={currentProjectLink} />
+            <QRCode className={styles.qrCol} value={`${window.location.origin}/viewproject/${currentId}`} />
         </div>
         </>
     )
