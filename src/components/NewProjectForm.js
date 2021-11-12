@@ -23,7 +23,7 @@ function NewProjectForm() {
     const [timePeriod, setTimePeriod] = useState("1 week")
     const [stage, setStage] = useState(1)
 
-    const {saveProject, getProject, setCurrentId, saveProjectLink, setCurrentProjectLink, setCurrentProject, currentProjectLink, sedarim, currentId, currentProject} = useDBcontext()
+    const {saveProject, getProject, setProject, setCurrentId, saveProjectLink, setCurrentProjectLink, setCurrentProject, currentProjectLink, sedarim, currentId, currentProject} = useDBcontext()
     
     const newProject = {
         title: title,
@@ -36,9 +36,7 @@ function NewProjectForm() {
     
         try {
             const newProj = await saveProject(newProject)
-            console.log('newProj', newProj)
             setCurrentProject(newProj)
-            setCurrentId(newProj.id)
             setStage(stage + 1)
         } catch (error) {
             console.log(error)

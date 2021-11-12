@@ -1,0 +1,26 @@
+.container {
+    margin: 2.5%;
+}
+
+.flexColumn {
+    margin: 2.5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flexColumn p {
+    font-size: 3vh;
+    border: 1px solid var(--shade4);
+    border-radius: 5px;
+    width: 50%;
+    margin: 2.5%;
+    padding: 2.5%;
+}
+
+.middle {
+    align-self: center;
+}
+
+.right {
+    align-self: flex-end;
+}

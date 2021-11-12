@@ -63,6 +63,7 @@ input[type="button"], input[type="submit"] {
     border-radius: 5px;
     background: var(--shade2);
     box-shadow: 2px 2px;
+    text-align: center;
 }
 
 .viewBtn:active {

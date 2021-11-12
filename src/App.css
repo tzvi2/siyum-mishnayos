@@ -13,7 +13,7 @@ a {
 .container {
   display: flex;
   justify-content: center;
-  margin: 5%;
+  margin: 2.5%;
 }
 
 #newProjLink {

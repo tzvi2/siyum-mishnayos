@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import DBprovider from './contexts/DBcontext';
 import ViewProject from './components/ViewProject';
 import NewProjectForm from './components/NewProjectForm';
+import About from './components/About';
 import Header from './components/Header'
 
 console.log('index.js')
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route path='/viewproject' element={<ViewProject />}>
           <Route path=":projectId" element={<ViewProject />} />
         </Route>
+        <Route path="about" element={<About />} />
       </Routes>
       </React.StrictMode>
     </BrowserRouter>

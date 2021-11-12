@@ -64,8 +64,9 @@ h2 {
     padding: 1%;
     font-size: 3vh;
     background: var(--shade1);
-    width: 40%;
     height: 4vh;
+    width: 70%;
+    overflow-y: hidden;
 }
 
 .masechtaForm {
@@ -87,6 +88,12 @@ h2 {
     margin-bottom: 2%;
 }
 
+.masechtaInfo {
+    display: flex;
+    justify-content: space-between;
+    max-width: 45%;
+}
+
 p {
     margin: 0;
 }
@@ -106,4 +113,12 @@ h5 {
 
 .qrLabel {
     margin-bottom: 5%;
+}
+
+.checkbox {
+    height: 5vh;
+    width: 5vh;
+    font-size: 4vh;
+    margin: 0;
+    color: chartreuse;
 }

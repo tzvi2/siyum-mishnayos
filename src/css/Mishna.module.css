@@ -11,7 +11,7 @@
     justify-content: center;
     width: 18vh;
     background: rgb(247, 246, 244);
-    border-top-right-radius: 6px;
+    border-top-right-radius: 8px;
     border-bottom-right-radius: 3px;
     border: 1px solid var(--shade4);
     border-left: 2.5px solid var(--shade4);
@@ -22,7 +22,7 @@
     justify-content: center;
     width: 18vh;
     background: rgb(247, 246, 244);
-    border-top-left-radius: 6px;
+    border-top-left-radius: 8px;
     border-bottom-left-radius: 3px;
     border: 1px solid var(--shade4);
     border-right: 2.5px solid var(--shade4);

@@ -1,8 +1,9 @@
 import React, {useState, useEffect, useContext} from "react";
 import {db} from '../firebaseConfig'
-import {setDoc, getDoc, doc, addDoc, collection, where, updateDoc, query, FieldPath, Timestamp, serverTimestamp} from 'firebase/firestore'
+import {setDoc, getDoc, doc, addDoc, collection, where, updateDoc, query, FieldPath, Timestamp, serverTimestamp, onSnapshot} from 'firebase/firestore'
 import {shas} from '../shas'
 import {useParams} from 'react-router-dom'
+import { Component } from "react";
 
 
 const DBcontext = React.createContext()
@@ -31,6 +32,7 @@ export function DBprovider({children}) {
             ...proj,
             createdAt: serverTimestamp()
         })
+        setCurrentId(newDocToSave.id)
         const update = await updateDoc(newDocToSave, {
             "link" : `http://localhost:3000/viewprojects:${newDocToSave.id}`
         })
@@ -75,6 +77,14 @@ export function DBprovider({children}) {
         return true
     }
 
+    const setCompleteStatus = async (projId, seder, masechta, complete) => {
+        const projRef = doc(db, "projects", projId)
+        let updateObj = {}
+        updateObj[`sedarim.${seder}.${masechta}.complete`] = complete
+        const update = await updateDoc(projRef, updateObj)
+        return true
+    }
+
     const setProject = async () => {
         const proj = await getProject(currentId)
         setCurrentProject(proj)
@@ -87,10 +97,25 @@ export function DBprovider({children}) {
 
 
     useEffect(() => {
-        console.log('type of currProj', typeof(currentProject))
-        console.log('currProj' ,currentProject)
-        //console.log('currProj sedarim' ,currentProject.sedarim)
-    }, [currentProject])
+        if (currentId) {
+            const unsubscribe = onSnapshot(doc(db, "projects", currentId), (proj) => {
+            setCurrentProject(proj.data())
+            })
+            return unsubscribe
+        }
+    }, [currentId])
+
+    // useEffect(() => {
+    //     let isMounted = true
+    //     console.log('currProj' ,currentProject)
+    //     if (isMounted) {
+    //         onSnapshot(doc(db, "projects", currentId), (doc) => {
+    //             setCurrentProject(doc.data())
+    //         })
+    //     return () => isMounted = false
+    //     }
+        
+    // }, [currentProject])
     
     const value = {
         currentId,
@@ -105,7 +130,8 @@ export function DBprovider({children}) {
         setCurrentProject,
         setProject,
         saveProjectLink,
-        getProject
+        getProject,
+        setCompleteStatus
     }
 
     return (

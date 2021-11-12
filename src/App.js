@@ -22,6 +22,9 @@ function App() {
       <div className="container">
         <Link id="newProjLink" to="newproject">New Project <img id="rightarrow" src={right_arrow}></img> </Link>
       </div>
+      <div className="container"> 
+        <Link id="newProjLink" to="about">Learn more <img id="rightarrow" src={right_arrow}></img> </Link>
+      </div>
       {/* <RecentProjectFeed /> */}
     </div> 
   );
