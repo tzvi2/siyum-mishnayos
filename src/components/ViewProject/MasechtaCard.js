@@ -37,19 +37,6 @@ function MasechtaCard(props) {
             console.log(error)
         }  
     }
-
-    // useEffect(() => {
-    //     if (signedUp) {
-    //         if (seconds === 0) {
-    //             setSignedUp(false)
-    //             window.location.reload()
-    //             return
-    //         }
-    //         setTimeout(() => {
-    //             setSeconds(seconds - 1)
-    //         }, 1000)
-    //     }
-    // }, [signedUp, seconds])
     
     return (
         <div className={styles.masechtaCard}>
@@ -71,32 +58,6 @@ function MasechtaCard(props) {
                     <input type="submit" value="Save"></input>
                 </form>
             </>}
-
-            {/* {signedUp && <>
-                <h5>Sign up successful. Refreshing in {seconds} seconds...</h5>
-            </>} */}
-            
-            
-
-
-            {/* <form className={styles.form} onSubmit={(e) => {handleSubmit(e)}}>
-            {!signingUp ? 
-            <input 
-                className={styles.icon} 
-                type="button" 
-                value={props.learner == null ? "+" : nameSwitch ? props.learner : props.complete ? "completed" : "in progress"}
-                onClick={() => {props.learner !== null ? setNameSwitch(!nameSwitch) : setSigningUp(true)}} 
-                >
-            </input>
-            :
-            <input 
-                className={styles.nameField} 
-                type="text" 
-                value={learner}
-                onChange={e => setLearner(e.target.value)}
-                >
-            </input>}
-            </form> */}
         </div>
     )
 }
