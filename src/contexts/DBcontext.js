@@ -57,7 +57,6 @@ export function DBprovider({children}) {
         if (id == "") {
             return {}
         }
-        console.log("id",id)
         console.log(typeof(id))
         const docRef = doc(db, "projects", id)
         const docSnap = await getDoc(docRef)
@@ -91,31 +90,14 @@ export function DBprovider({children}) {
         return proj
     }
 
-    // useEffect(() => {
-    //     setProject()
-    // }, [currentId])
-
-
     useEffect(() => {
         if (currentId) {
             const unsubscribe = onSnapshot(doc(db, "projects", currentId), (proj) => {
-            setCurrentProject(proj.data())
+                setCurrentProject(proj.data())
             })
             return unsubscribe
         }
     }, [currentId])
-
-    // useEffect(() => {
-    //     let isMounted = true
-    //     console.log('currProj' ,currentProject)
-    //     if (isMounted) {
-    //         onSnapshot(doc(db, "projects", currentId), (doc) => {
-    //             setCurrentProject(doc.data())
-    //         })
-    //     return () => isMounted = false
-    //     }
-        
-    // }, [currentProject])
     
     const value = {
         currentId,

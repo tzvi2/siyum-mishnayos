@@ -1,11 +1,18 @@
+h3 {
+    font-size: 5vh;
+}
+
 .container {
-    margin: 2.5%;
+    margin: 2vh;
+    max-width: 800px;
 }
 
 .flexColumn {
-    margin: 2.5%;
+    margin: 2vh;
     display: flex;
     flex-direction: column;
+    width: 80%;
+    max-width: 800px;
 }
 
 .flexColumn p {
@@ -15,6 +22,8 @@
     width: 50%;
     margin: 2.5%;
     padding: 2.5%;
+    background: var(--shade2);
+    color: var(--shade4);
 }
 
 .middle {

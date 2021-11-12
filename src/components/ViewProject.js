@@ -2,7 +2,7 @@ import React, {useState, useContext, useEffect} from 'react'
 import styles from '../css/ViewProject.module.css'
 import SederAccordion from '../components/ViewProject/SederAccordion'
 import Header from '../components/Header'
-//import {shas} from '../shas'
+import {shas} from '../shas'
 import {useDBcontext} from '../contexts/DBcontext'
 import QRCode from 'qrcode.react'
 import {useHistory, useParams, Link} from 'react-router-dom'
@@ -11,7 +11,6 @@ import {useHistory, useParams, Link} from 'react-router-dom'
 
 function ViewProject() {
     console.log("ViewProject" )
-    console.log(window.location)
     
     let params = useParams()
 
@@ -32,11 +31,10 @@ function ViewProject() {
             // } else {
                 let id = params.projectId
                 setCurrentId(id)
-                localStorage.removeItem("current ID")
-                localStorage.setItem("current ID", id)
+                // localStorage.removeItem("current ID")
+                // localStorage.setItem("current ID", id)
                 try {
                     const project = await(getProject(id))
-                    console.log('retrieved project' , project)
                     setCurrentProject(project)
                 } catch (err) {
                     console.log('err', err)
@@ -44,6 +42,7 @@ function ViewProject() {
             //} 
         }
     }
+
 
     useEffect(() => {
         checkParams()
@@ -58,19 +57,21 @@ function ViewProject() {
         </div>
 
         <div className={styles.flexColumn}>
-            {!currentProject ? <div>loading</div> :
-            Object.keys(currentProject.sedarim).map((seder, i) => {
-                let arr = []
-                Object.entries(currentProject.sedarim[seder]).map(([masechta, data]) => {
-                    arr.push({masechta, data})
-                })
-                return (
-                    <SederAccordion key={i} seder={seder} masechtos={arr} />
-                )
-            })}
+        {!currentProject ? <p>loading...</p> : <>    
+            {Object.keys(shas).map((seder,i) => {
+                if (currentProject.sedarim[seder]) {
+                    let masechtosArr = []
+                    Object.keys(shas[seder]).map((masechta, i) => {
+                        masechtosArr.push({[masechta]: {...currentProject.sedarim[seder][masechta]}})
+                    })
+                    return (
+                        <SederAccordion key={i} seder={seder} masechtos={masechtosArr} />
+                    )
+                }
+            })} </>}
         </div>
 
-        <div className={styles.flexColumn}>
+        <div className={`${styles.flexColumn} ${styles.bottom}`}>
             <label className={`${styles.qrCol} ${styles.qrLabel}`}>Project QR code:</label>
             <QRCode className={styles.qrCol} value={currentProjectLink} />
         </div>

@@ -4,30 +4,33 @@ import MasechtaCard from './MasechtaCard'
 import down_arrow from '../../images/down_arrow.png'
 
 function SederAccordion(props) {
+    console.log("seder accordion render")
     const [expanded, setExpanded] = useState(false)
-    //console.log('props.masechtos',props.masechtos)
+    
     return (
         <>
         <div className={styles.sederCard} onClick={() => setExpanded(!expanded)}>
-            <label>{props.seder}</label>
+            <label className={styles.sederName}>{props.seder}</label>
             {expanded ? <img  src={down_arrow}></img>
             : <img className={styles.up} src={down_arrow}></img>}
-            
         </div>
-        {expanded && <>
+
+        {expanded && 
         <div>
-            {props.masechtos.map((masechta, i) => {
+            {props.masechtos.map((obj, i) => {
+                let masechta = Object.keys(obj)[0]
                 return (
                     <MasechtaCard
                         key={i}
-                        masechta={masechta?.masechta}
-                        complete={masechta?.data?.complete}
-                        learner={masechta?.data?.learner}
+                        masechta={masechta}
+                        complete={obj[masechta].complete}
+                        learner={obj[masechta].learner}
                         seder={props.seder}
                     />
                 )
             })}
-        </div></>}
+        </div>
+        }
         </>
     )
 }

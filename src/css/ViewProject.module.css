@@ -15,25 +15,34 @@ h2 {
 }
 
 .flexColumn {
-    margin: 5%;
+    margin: 2vh;
     display: flex;
     flex-direction: column;
+    width: 90%;
+    max-width: 700px;
 }
 
 .sederCard {
     display: flex;
     justify-content: space-between;
     width: 90%;
-    font-size: 4vh;
+    font-size: 3vh;
     border: 1px solid var(--shade4);
     background: linear-gradient(90deg, var(--shade1), var(--shade1), var(--shade2));
     /* box-shadow: -2.5px -2.5px 5px 1px var(--shade5); */
-    padding: 2.5% 5%;
+    padding: 1vh 2vh;
+}
+
+.sederName {
+    display: flex;
+    align-items: center;
 }
 
 .sederCard img {
-    height: 35px;
-    width: 25px;
+    height: 50%;
+    width: 10%;
+    max-height: 35px;
+    max-width: 35px;
 }
 
 .up {
@@ -48,7 +57,7 @@ h2 {
     /* box-shadow: -2.5px 0px 0 1px var(--shade4); */
     background: rgb(241, 241, 241);
     justify-content: space-between;
-    font-size: 3.5vh;
+    font-size: 3vh;
     align-items: center;
     width: 92%;
 }
@@ -67,6 +76,7 @@ h2 {
     height: 4vh;
     width: 70%;
     overflow-y: hidden;
+    cursor: pointer;
 }
 
 .masechtaForm {
@@ -109,11 +119,12 @@ h5 {
 .qrCol {
     align-self: center;
     font-size: 3.5vh;
-}
-
-.qrLabel {
     margin-bottom: 5%;
 }
+
+/* .qrLabel {
+    margin-bottom: 5%;
+} */
 
 .checkbox {
     height: 5vh;
@@ -121,4 +132,8 @@ h5 {
     font-size: 4vh;
     margin: 0;
     color: chartreuse;
+}
+
+.bottom {
+    margin-bottom: 0;
 }
