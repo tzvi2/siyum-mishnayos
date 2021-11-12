@@ -64,7 +64,7 @@ function CreateProject(props) {
                 </select>
             </label>
             
-            <input className={styles.centered} readOnly type="button" value="Next" onClick={() => {if(!props.title) {setTitleError(true); return} props.setStage(props.stage + 1)}}></input>
+            <input className={`${styles.centered} ${styles.soloBtn}`} readOnly type="button" value="Next" onClick={() => {if(!props.title) {setTitleError(true); return} props.setStage(props.stage + 1)}}></input>
         </div>
         </>
     )

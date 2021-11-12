@@ -4,6 +4,7 @@
 
 h1 {
     color: var(--shade4);
-    margin: 5%;
+    padding: 5%;
+    margin: 0;
 }
 

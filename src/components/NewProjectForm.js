@@ -38,6 +38,7 @@ function NewProjectForm() {
             const newProj = await saveProject(newProject)
             console.log('newProj', newProj)
             setCurrentProject(newProj)
+            setCurrentId(newProj.id)
             setStage(stage + 1)
         } catch (error) {
             console.log(error)

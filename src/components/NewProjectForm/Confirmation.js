@@ -9,18 +9,21 @@ function Confirmation(props) {
     return (
         <>
         <div className={styles.formSection}>  
-            <label className={styles.formRow}>Title: <input className={styles.info} readOnly value={props.title}></input></label>
-            <label className={styles.formRow}>Time Period: <input className={styles.info} readOnly value={props.timePeriod}></input></label>
+            <label className={styles.formRow}>Title: <input className={styles.info} readOnly value={currentProject.title}></input></label>
+            <label className={styles.formRow}>Time Period: <input className={styles.info} readOnly value={currentProject.timePeriod}></input></label>
             <label className={styles.formRow}>Sedarim: 
                 <textarea className={styles.info} readOnly
-                    value={props.selectedSedarim.join(" ")}>
+                    value={`${props.selectedSedarim.join(" ")}`}>
                 </textarea>
             </label>
 
-            <label className={styles.formRow}>Your project's shareable QR code:</label>
-            <QRCode value={currentProject.link} />
-        
-            <Link className={styles.soloBtn} to={`/viewproject/${currentId}`}><input className={styles.viewBtn} type="button" value="View"></input></Link>
+            <label className={`${styles.formRow} ${styles.centered}`}>Your project's QR code:</label>
+            <QRCode className={`${styles.formRow} ${styles.centered}`} value={currentProject.link} />
+            
+            <div className={`${styles.formRow} ${styles.bottom}`}>
+                <Link className={styles.viewBtn} to={`/viewproject/${currentId}`}>View your project</Link> 
+            </div>
+            
         </div>  
         </>
     )

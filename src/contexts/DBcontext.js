@@ -71,8 +71,8 @@ export function DBprovider({children}) {
         const projRef = doc(db, "projects", currentId)
         let updateObj = {}
         updateObj[`sedarim.${seder}.${masechta}.learner`] = name
-        const updating = await updateDoc(projRef, updateObj)
-        return updating
+        await updateDoc(projRef, updateObj)
+        return true
     }
 
     const setProject = async () => {

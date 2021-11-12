@@ -8,6 +8,7 @@ input, select, textarea {
     width: 45%;
     font-size: 4vh;
     font-family: 'Open Sans', sans-serif;
+    resize: none;
 }
 
 input[type="text"] {
@@ -40,14 +41,34 @@ input[type="button"], input[type="submit"] {
     display: flex;
     justify-content: space-between;
     margin: 2% 0;
+    justify-items: center;
 }
 
 .centered {
     align-self: center;
+}
+
+.soloBtn {
     width: 75%;
     border-radius: 5px;
     border-width: 1px;
 }
+
+.viewBtn {
+    border: 1px solid var(--shade4);
+    padding: 2.5%;
+    justify-self: center;
+    width: 70%;
+    color: var(--shade4);
+    border-radius: 5px;
+    background: var(--shade2);
+    box-shadow: 2px 2px;
+}
+
+.viewBtn:active {
+    box-shadow: none;
+}
+
 
 .half {
     width: 48%;
@@ -57,5 +78,10 @@ input[type="button"], input[type="submit"] {
     align-self: flex-end;
     margin: 2% 0;
     color: var(--shade5);
+}
+
+.bottom {
+    margin-bottom: 0;
+    justify-content: center !important;
 }
 

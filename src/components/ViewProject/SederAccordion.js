@@ -4,18 +4,18 @@ import MasechtaCard from './MasechtaCard'
 import down_arrow from '../../images/down_arrow.png'
 
 function SederAccordion(props) {
-    const [expanded, setExpanded] = useState(true)
+    const [expanded, setExpanded] = useState(false)
     //console.log('props.masechtos',props.masechtos)
     return (
         <>
         <div className={styles.sederCard} onClick={() => setExpanded(!expanded)}>
             <label>{props.seder}</label>
-            {expanded ? <img className={styles.up} src={down_arrow}></img>
-            : <img src={down_arrow}></img>}
+            {expanded ? <img  src={down_arrow}></img>
+            : <img className={styles.up} src={down_arrow}></img>}
             
         </div>
         {expanded && <>
-        <div className={styles.masechtaSection}>
+        <div>
             {props.masechtos.map((masechta, i) => {
                 return (
                     <MasechtaCard

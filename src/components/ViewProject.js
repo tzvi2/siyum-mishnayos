@@ -52,13 +52,13 @@ function ViewProject() {
     return (
         <>
         <Header />
-        <div className={styles.container}>
-            <h2>Title: Shteig</h2>
-            <h2>Duration: 1 month</h2> 
+        <div className={`${styles.flexColumn} ${styles.banner}`}>
+            <h2>{currentProject?.title}</h2>
+            <h2>{currentProject?.timePeriod}</h2> 
         </div>
 
-        <div className={styles.container}>
-            {currentProject == null ? <div>loading</div> :
+        <div className={styles.flexColumn}>
+            {!currentProject ? <div>loading</div> :
             Object.keys(currentProject.sedarim).map((seder, i) => {
                 let arr = []
                 Object.entries(currentProject.sedarim[seder]).map(([masechta, data]) => {
@@ -70,9 +70,9 @@ function ViewProject() {
             })}
         </div>
 
-        <div className={styles.container}>
-            <label>Project QR code:</label>
-            <QRCode value={currentProjectLink} />
+        <div className={styles.flexColumn}>
+            <label className={`${styles.qrCol} ${styles.qrLabel}`}>Project QR code:</label>
+            <QRCode className={styles.qrCol} value={currentProjectLink} />
         </div>
         </>
     )
