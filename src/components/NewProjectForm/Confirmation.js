@@ -21,7 +21,7 @@ function Confirmation(props) {
             <QRCode className={`${styles.formRow} ${styles.centered}`} value={currentProject.link} />
             
             <div className={`${styles.formRow} ${styles.bottom}`}>
-                <Link className={styles.viewBtn} to={`/viewproject/${currentId}`}>View your project</Link> 
+                <a className={styles.viewBtn} href={`${window.location.origin}/viewproject/${currentId}`}>View your project</a> 
             </div>
             
         </div>  
