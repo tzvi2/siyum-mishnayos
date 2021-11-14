@@ -10,7 +10,6 @@ import Mishna from './components/Mishna';
 import TextAnimation from './components/TextAnimation';
 
 function App() {
-  console.log("App")
   return (
     <div className="App">
       <Header />

@@ -5,7 +5,6 @@ import { useDBcontext } from '../../contexts/DBcontext'
 
 function ReviewProject(props) {
     const {sedarim} = useDBcontext()
-    console.log('ReviewProject - sedarim =', sedarim)
     return (
         <>
         <div className={styles.formSection} >

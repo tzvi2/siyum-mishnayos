@@ -17,7 +17,6 @@ import QRCode from 'qrcode.react'
 
 function NewProjectForm() {
 
-    console.log("NewProjectForm")
     
     const [title, setTitle] = useState("")
     const [timePeriod, setTimePeriod] = useState("1 week")

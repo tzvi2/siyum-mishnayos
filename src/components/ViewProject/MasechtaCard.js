@@ -31,7 +31,6 @@ function MasechtaCard(props) {
 
     const handleCheckBoxClick = async (e) => {
         e.preventDefault()
-        console.log(e.target.checked)
         try {
             await setCompleteStatus(currentId, props.seder, props.masechta, e.target.checked)
             //setChecked(!checked)

@@ -14,7 +14,6 @@ export function useDBcontext() {
 
 export function DBprovider({children}) {
 
-    console.log('DBProvider')
     
 
     let params = useParams()
@@ -29,7 +28,6 @@ export function DBprovider({children}) {
     // console.log('sedarim', sedarim)
 
     const saveProject = async (proj) => {  
-        console.log('saving project, newProject', proj)
         const newDocToSave = await addDoc(collection(db, "projects"), {
             ...proj,
             createdAt: serverTimestamp()
@@ -48,9 +46,10 @@ export function DBprovider({children}) {
 
     const saveProjectLink = async (id) => {
         console.log('saving project link. id:', id)
+        console.log('save')
         const projRef = doc(db, "projects", id)
         const update = await updateDoc(projRef, {
-            "link" : `http://localhost:3000/viewprojects:${id}`
+            "link" : `${window.location.href}${id}`
         })
         return update
     }
@@ -59,7 +58,6 @@ export function DBprovider({children}) {
         if (id == "") {
             return {}
         }
-        console.log(typeof(id))
         const docRef = doc(db, "projects", id)
         const docSnap = await getDoc(docRef)
         if (docSnap.exists()) {

@@ -9,7 +9,6 @@ import NewProjectForm from './components/NewProjectForm';
 import About from './components/About';
 import Header from './components/Header'
 
-console.log('index.js')
 
 ReactDOM.render(
   <DBprovider>

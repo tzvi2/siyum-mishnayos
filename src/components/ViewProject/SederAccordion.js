@@ -4,7 +4,6 @@ import MasechtaCard from './MasechtaCard'
 import down_arrow from '../../images/down_arrow.png'
 
 function SederAccordion(props) {
-    console.log("seder accordion render")
     const [expanded, setExpanded] = useState(false)
     
     return (

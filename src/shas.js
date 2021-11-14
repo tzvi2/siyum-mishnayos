@@ -1,4 +1,3 @@
-console.log("shas")
 export const shas = {
     Zeraim: {
         Berachos: {

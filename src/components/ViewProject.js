@@ -10,7 +10,6 @@ import {useHistory, useParams, Link} from 'react-router-dom'
 
 
 function ViewProject() {
-    console.log("ViewProject" )
     
     let params = useParams()
 

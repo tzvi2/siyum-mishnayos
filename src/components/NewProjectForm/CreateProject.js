@@ -12,7 +12,7 @@ function CreateProject(props) {
     const mql = window.matchMedia("screen and (max-width: 700px")
     const [mobile, setMobile] = useState(mql.matches)
     //const [selected, setSelected] = useState(["Zeraim"])
-    const [showSedarimList, setShowSedarimList] = useState(false)
+    const [showSedarimList, setShowSedarimList] = useState(true)
     const [titleError, setTitleError] = useState(false)
     const [sederError, setSederError] = useState(false)
     

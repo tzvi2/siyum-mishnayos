@@ -29,13 +29,13 @@ input[type="button"] {
     -webkit-appearance: none;
     padding: .5% 5px;
     border-width: 1px;
-    overflow-x: scroll;
 }
 
 input[type="text"] {
     border: 1px solid grey;
     box-sizing: border-box;
     padding: 2px 3.5%;
+    padding-left: 1%;
 }
 
 input[type="submit"] {
