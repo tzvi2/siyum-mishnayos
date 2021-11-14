@@ -1,8 +1,11 @@
 import React from 'react'
 import styles from '../../css/NewProjectForm.module.css'
+import { useDBcontext } from '../../contexts/DBcontext'
 
 
 function ReviewProject(props) {
+    const {sedarim} = useDBcontext()
+    console.log('ReviewProject - sedarim =', sedarim)
     return (
         <>
         <div className={styles.formSection} >
@@ -10,7 +13,7 @@ function ReviewProject(props) {
             <label className={styles.formRow}>Time Period: <input className={styles.info} readOnly value={props.timePeriod}></input></label>
             <label className={styles.formRow}>Sedarim: 
                 <textarea className={styles.info} readOnly
-                    value={props.selectedSedarim.join(" ")}>
+                    value={Object.keys(sedarim).join(" \n")}>
                 </textarea>
             </label>
 

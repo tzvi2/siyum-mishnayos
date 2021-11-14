@@ -5,7 +5,7 @@
 }
 
 h2 {
-    margin: 2.5%;
+    margin: 2vh;
     vertical-align: middle;
 }
 
@@ -51,32 +51,35 @@ h2 {
 
 .masechtaCard {
     display: flex;
-    padding: 1.5%;
+    padding: 1%;
     margin-left: 5%;
     border: 1px solid var(--shade4);
     /* box-shadow: -2.5px 0px 0 1px var(--shade4); */
     background: rgb(241, 241, 241);
     justify-content: space-between;
-    font-size: 3vh;
+    font-size: 2.75vh;
     align-items: center;
     width: 92%;
 }
 
 .icon {
     height: 5vh;
-    width: 5vh;
-    font-size: 4vh;
+    font-size: 2.75vh;
+    width: 100%;
 }
 
 .status {
     border: 1px solid black;
-    padding: 1%;
-    font-size: 3vh;
+    font-size: 2.5vh;
     background: var(--shade1);
-    height: 4vh;
-    width: 70%;
+    width: 80%;
+    height: 5vh;
     overflow-y: hidden;
     cursor: pointer;
+    display: flex;
+    align-content: center;
+    padding: 2%;
+    outline: none;
 }
 
 .masechtaForm {
@@ -102,6 +105,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     max-width: 45%;
+    align-items: center;
 }
 
 p {
@@ -127,9 +131,9 @@ h5 {
 } */
 
 .checkbox {
-    height: 5vh;
+    height: 4.5vh;
     width: 5vh;
-    font-size: 4vh;
+    font-size: 3vh;
     margin: 0;
     color: chartreuse;
 }

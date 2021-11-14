@@ -1,5 +1,5 @@
 h3 {
-    font-size: 5vh;
+    font-size: 3vh;
 }
 
 .container {
@@ -11,7 +11,7 @@ h3 {
     margin: 2vh;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     max-width: 800px;
 }
 
@@ -19,7 +19,7 @@ h3 {
     font-size: 3vh;
     border: 1px solid var(--shade4);
     border-radius: 5px;
-    width: 50%;
+    width: 60%;
     margin: 2.5%;
     padding: 2.5%;
     background: var(--shade2);

@@ -1,7 +1,7 @@
 .mishna {
     font-size: 5vh;
     display: flex;
-    font-family: fantasy;
+    font-family: 'Times New Roman', Times, serif;
     color: var(--shade4);
     margin-top: 15vh;
   }

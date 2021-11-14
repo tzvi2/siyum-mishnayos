@@ -5,7 +5,7 @@ import QRCode from 'qrcode.react'
 import {useDBcontext} from '../../contexts/DBcontext'
 
 function Confirmation(props) {
-    const {currentProject, currentProjectLink, currentId} = useDBcontext()
+    const {currentProject, sedarim, currentId} = useDBcontext()
     return (
         <>
         <div className={styles.formSection}>  
@@ -13,7 +13,7 @@ function Confirmation(props) {
             <label className={styles.formRow}>Time Period: <input className={styles.info} readOnly value={currentProject.timePeriod}></input></label>
             <label className={styles.formRow}>Sedarim: 
                 <textarea className={styles.info} readOnly
-                    value={`${props.selectedSedarim.join(" ")}`}>
+                    value={Object.keys(sedarim).join(" ")}>
                 </textarea>
             </label>
 

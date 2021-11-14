@@ -15,6 +15,7 @@ export function useDBcontext() {
 export function DBprovider({children}) {
 
     console.log('DBProvider')
+    
 
     let params = useParams()
 
@@ -22,9 +23,10 @@ export function DBprovider({children}) {
     const [currentId, setCurrentId] = useState("")
     const [currentProjectLink, setCurrentProjectLink] = useState("")
 
-    let sedarim = {Zeraim: shas.Zeraim}
+    const [sedarim, setSedarim] = useState({})
+    //let sedarim = {}
 
-    
+    // console.log('sedarim', sedarim)
 
     const saveProject = async (proj) => {  
         console.log('saving project, newProject', proj)
@@ -108,6 +110,7 @@ export function DBprovider({children}) {
         setCurrentProjectLink,
         signUp,
         sedarim,
+        //setSedarim,
         currentProject,
         setCurrentProject,
         setProject,

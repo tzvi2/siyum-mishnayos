@@ -23,12 +23,14 @@ function MasechtaCard(props) {
         try {
             await signUp(currentId, props.seder, props.masechta, learner)
             setSigningUp(!signingUp)
+            setNameSwitch(!nameSwitch)
         } catch (error) {
             console.log(error)
         }
     }
 
     const handleCheckBoxClick = async (e) => {
+        e.preventDefault()
         console.log(e.target.checked)
         try {
             await setCompleteStatus(currentId, props.seder, props.masechta, e.target.checked)
@@ -49,7 +51,7 @@ function MasechtaCard(props) {
             </textarea>
             </>}
 
-            {!signingUp && props.learner == null && <button disabled={signingUp} className={styles.icon} onClick={() => setSigningUp(!signingUp)}>+</button>}
+            {!signingUp && props.learner == null && <input readOnly type="button" value="Sign up" className={styles.icon} onClick={() => setSigningUp(!signingUp)}></input>}
             {!signingUp && props.learner !== null && <input className={styles.checkbox} type="checkbox" checked={props.complete} onChange={handleCheckBoxClick} disabled={signingUp}></input>}
             </div>
             {signingUp &&  <>

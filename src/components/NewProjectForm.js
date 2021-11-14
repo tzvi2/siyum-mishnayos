@@ -13,7 +13,7 @@ import { useDBcontext } from '../contexts/DBcontext'
 import QRCode from 'qrcode.react'
 
 
-let selectedSedarim = ["Zeraim"]
+
 
 function NewProjectForm() {
 
@@ -22,6 +22,15 @@ function NewProjectForm() {
     const [title, setTitle] = useState("")
     const [timePeriod, setTimePeriod] = useState("1 week")
     const [stage, setStage] = useState(1)
+    //const [selectedSedarim, setSelectedSedarim] = useState(["Zeraim"])
+    let selectedSedarim = {
+        Zeraim: true,
+        Moed: false,
+        Nashim: false,
+        Nezikin: false,
+        Kadshim: false,
+        Taharos: false
+    }
 
     const {saveProject, getProject, setProject, setCurrentId, saveProjectLink, setCurrentProjectLink, setCurrentProject, currentProjectLink, sedarim, currentId, currentProject} = useDBcontext()
     
@@ -43,12 +52,16 @@ function NewProjectForm() {
         }
     }
 
+    useEffect(() => {
+        //console.log(selectedSedarim)
+    }, [selectedSedarim])
+
     return (
         
         <div className="App">
             <Header />
             <div className="container">
-            <form onSubmit={e => addProject(e)}>
+            <form className={styles.projectForm} onSubmit={e => addProject(e)}>
 
                 {stage === 1 && <>
                 <h2>Create Project</h2>

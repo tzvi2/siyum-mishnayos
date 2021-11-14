@@ -1,39 +1,66 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styles from '../../css/NewProjectForm.module.css'
 import {useDBcontext} from '../../contexts/DBcontext'
 import {shas} from '../../shas'
+import Select from 'react-select'
 
 
 //let selectedSedarim = ["Zeraim"]
 
 function CreateProject(props) {
 
+    const mql = window.matchMedia("screen and (max-width: 700px")
+    const [mobile, setMobile] = useState(mql.matches)
+    //const [selected, setSelected] = useState(["Zeraim"])
+    const [showSedarimList, setShowSedarimList] = useState(false)
     const [titleError, setTitleError] = useState(false)
-
-    const {sedarim} = useDBcontext()
-
-    function handleSederChange(e) {
-
-        let seder = e.target.value
-
-        // for UI only
-        if (props.selectedSedarim.includes(seder)) {
-            props.selectedSedarim.splice(props.selectedSedarim.indexOf(seder), 1)
-        } else {
-            props.selectedSedarim.push(seder)
+    const [sederError, setSederError] = useState(false)
+    
+    const {sedarim, setSedarim} = useDBcontext()
+    useEffect(() => {
+        const handleScreenResize = () => setMobile(mql.matches)
+        mql.addEventListener('change', handleScreenResize)
+        //console.log(mql.matches)
+        return () => {
+            mql.removeEventListener('change', handleScreenResize)
         }
+    }, [mql])
 
-        
-        //to update sedarim object based on selected seders
+    
+    // useEffect(() => {
+    //     console.log(selected)
+    // }, [selected])
+
+    function handleSederChange(e, seder) {
+
+        setSederError(false)
+
         if (sedarim[seder]) {
+            // if (Object.keys(sedarim).length === 1) {
+            //     return
+            // }
             delete sedarim[seder]
 
         } else {
             sedarim[seder] = shas[seder]
-
         }
     }
 
+    const advance = () => {
+
+        if (!props.title) {
+            setTitleError(true); 
+            return
+        }
+        for(let e in sedarim) {
+            props.setStage(props.stage + 1)
+            return
+        }; 
+        setSederError(true)
+        return 
+
+    }
+    
     return (
         <>
         <div className={styles.formSection}>
@@ -52,19 +79,27 @@ function CreateProject(props) {
                 </select>
             </label>
             
-            <label className={styles.formRow}>
-                Sedarim:
-                <select className={styles.sedarimDropdown} multiple={true} value={props.selectedSedarim} onChange={e => handleSederChange(e)}>
-                    <option value="Zeraim">Zeraim</option>
-                    <option value="Moed">Moed</option>
-                    <option value="Nashim">Nashim</option>
-                    <option value="Nezikin">Nezikin</option>
-                    <option value="Kadshim">Kadshim</option>
-                    <option value="Taharos">Taharos</option>
-                </select>
-            </label>
+
+            {sederError && <p className={styles.error}>Please choose at least one seder.</p>}
+            <div className={styles.formRow}>
+                <label htmlFor="seder_selection">Sedarim:</label>
+                <input className={styles.dropdown} type="button" onClick={() => setShowSedarimList(!showSedarimList)} value={"Select..." }></input>
+            </div>
+            {showSedarimList && 
+                <div className={styles.sederList}>
+                    <label className={styles.seder}>Zeraim<input onChange={e => handleSederChange(e, "Zeraim")} type="checkbox" checked={sedarim["Zeraim"]}></input></label>
+                    <label className={styles.seder}>Moed<input onChange={e => handleSederChange(e, "Moed")} type="checkbox" checked={sedarim["Moed"]}></input></label>
+                    <label className={styles.seder}>Nashim<input onChange={e => handleSederChange(e, "Nashim")} type="checkbox" checked={sedarim["Nashim"]}></input></label>
+                    <label className={styles.seder}>Nezikin<input onChange={e => handleSederChange(e, "Nezikin")} type="checkbox" checked={sedarim["Nezikin"]}></input></label>
+                    <label className={styles.seder}>Kadshim<input onChange={e => handleSederChange(e, "Kadshim")} type="checkbox" checked={sedarim["Kadshim"]}></input></label>
+                    <label className={styles.seder}>Taharos<input onChange={e => handleSederChange(e, "Taharos")} type="checkbox" checked={sedarim["Taharos"]}></input></label>
+                </div>
+            }
             
-            <input className={`${styles.centered} ${styles.soloBtn}`} readOnly type="button" value="Next" onClick={() => {if(!props.title) {setTitleError(true); return} props.setStage(props.stage + 1)}}></input>
+            
+            <div className={styles.formRow}>
+                <input className={`${styles.soloBtn}`} readOnly type="button" value="Next" onClick={() => advance()}></input>
+            </div>
         </div>
         </>
     )
