@@ -14,7 +14,7 @@ input, select, textarea, .selector {
     font-size: 2.75vh;
     font-family: 'Open Sans', sans-serif;
     resize: none;
-    margin: 0 1.5%;
+    margin: 0;
     border-radius: 5px;
     padding: 0 2px;
     box-sizing: border-box;
@@ -48,7 +48,7 @@ input[type="submit"] {
 }
 
 .dropdown {
-    text-align: start;
+    text-align: left;
     padding: 1% 0;
 }
 
@@ -71,8 +71,9 @@ input[type="submit"] {
     display: flex;
     justify-content: space-between;
     margin: 2% 0;
-  
 }
+
+
 
 
 .formRow:last-child {
@@ -93,11 +94,13 @@ input[type="submit"] {
     justify-content: space-between;
     width: 45%;
     align-items: center;
+    margin-bottom: 1vh;
 }
 
-.seder input {
+.sederList input {
    width: 10%;
    height: 4vh;
+   padding: 2vh;
 }
 
 .centered {
@@ -130,6 +133,7 @@ input[type="submit"] {
 
 .half {
     width: 48%;
+    margin: 1%;
 }
 
 .error {

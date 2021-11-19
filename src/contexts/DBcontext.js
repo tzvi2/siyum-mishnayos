@@ -108,7 +108,7 @@ export function DBprovider({children}) {
         setCurrentProjectLink,
         signUp,
         sedarim,
-        //setSedarim,
+        setSedarim,
         currentProject,
         setCurrentProject,
         setProject,
@@ -116,6 +116,10 @@ export function DBprovider({children}) {
         getProject,
         setCompleteStatus
     }
+    
+    useEffect(() => {
+        console.log(sedarim)
+    }, [sedarim])
 
     return (
         <DBcontext.Provider value={value}>

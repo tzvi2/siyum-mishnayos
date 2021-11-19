@@ -8,41 +8,38 @@ import Select from 'react-select'
 //let selectedSedarim = ["Zeraim"]
 
 function CreateProject(props) {
-
-    const mql = window.matchMedia("screen and (max-width: 700px")
-    const [mobile, setMobile] = useState(mql.matches)
-    //const [selected, setSelected] = useState(["Zeraim"])
-    const [showSedarimList, setShowSedarimList] = useState(true)
     const [titleError, setTitleError] = useState(false)
     const [sederError, setSederError] = useState(false)
+    const [allSelected, setAllSelected] = useState(false)
     
     const {sedarim, setSedarim} = useDBcontext()
-    useEffect(() => {
-        const handleScreenResize = () => setMobile(mql.matches)
-        mql.addEventListener('change', handleScreenResize)
-        //console.log(mql.matches)
-        return () => {
-            mql.removeEventListener('change', handleScreenResize)
-        }
-    }, [mql])
-
-    
-    // useEffect(() => {
-    //     console.log(selected)
-    // }, [selected])
-
-    function handleSederChange(e, seder) {
+  
+    function handleSederChange(e) {
 
         setSederError(false)
-
+        let seder = e.target.value
         if (sedarim[seder]) {
-            // if (Object.keys(sedarim).length === 1) {
-            //     return
-            // }
-            delete sedarim[seder]
-
+            let newSedarimState = sedarim
+            delete newSedarimState[seder]
+            setSedarim(newSedarimState)
         } else {
-            sedarim[seder] = shas[seder]
+            let newSedarimState = sedarim
+            newSedarimState[seder] = shas[seder]
+            setSedarim(newSedarimState)
+        }
+    }
+
+    const toggleSelectAll = () => {
+        if(allSelected) {
+            for (let k of Object.keys(shas)) {
+                delete sedarim[k]
+            }
+            setAllSelected(false)
+        } else {
+            for (let key of Object.keys(shas)) {
+                sedarim[key] = shas[key]
+            }
+            setAllSelected(true)
         }
     }
 
@@ -83,18 +80,18 @@ function CreateProject(props) {
             {sederError && <p className={styles.error}>Please choose at least one seder.</p>}
             <div className={styles.formRow}>
                 <label htmlFor="seder_selection">Sedarim:</label>
-                <input className={styles.dropdown} type="button" onClick={() => setShowSedarimList(!showSedarimList)} value={"Select..." }></input>
+                <input className={styles.dropdown} type="button" onClick={() => toggleSelectAll()} value={allSelected ? "deselect all" : "Select all" }></input>
             </div>
-            {showSedarimList && 
-                <div className={styles.sederList}>
-                    <label className={styles.seder}>Zeraim<input onChange={e => handleSederChange(e, "Zeraim")} type="checkbox" checked={sedarim["Zeraim"]}></input></label>
-                    <label className={styles.seder}>Moed<input onChange={e => handleSederChange(e, "Moed")} type="checkbox" checked={sedarim["Moed"]}></input></label>
-                    <label className={styles.seder}>Nashim<input onChange={e => handleSederChange(e, "Nashim")} type="checkbox" checked={sedarim["Nashim"]}></input></label>
-                    <label className={styles.seder}>Nezikin<input onChange={e => handleSederChange(e, "Nezikin")} type="checkbox" checked={sedarim["Nezikin"]}></input></label>
-                    <label className={styles.seder}>Kadshim<input onChange={e => handleSederChange(e, "Kadshim")} type="checkbox" checked={sedarim["Kadshim"]}></input></label>
-                    <label className={styles.seder}>Taharos<input onChange={e => handleSederChange(e, "Taharos")} type="checkbox" checked={sedarim["Taharos"]}></input></label>
+            
+                <div className={styles.sederList} onChange={e => handleSederChange(e)}>
+                    <label className={styles.seder}>Zeraim<input key={Math.random()} value="Zeraim" type="checkbox" defaultChecked={sedarim.Zeraim}></input></label>
+                    <label className={styles.seder}>Moed<input key={Math.random()} value="Moed" type="checkbox" defaultChecked={sedarim.Moed}></input></label>
+                    <label className={styles.seder}>Nashim<input key={Math.random()} value="Nashim" type="checkbox" defaultChecked={sedarim.Nashim}></input></label>
+                    <label className={styles.seder}>Nezikin<input key={Math.random()} value="Nezikin" type="checkbox" defaultChecked={sedarim.Nezikin}></input></label>
+                    <label className={styles.seder}>Kadshim<input key={Math.random()} value="Kadshim" type="checkbox" defaultChecked={sedarim.Kadshim}></input></label>
+                    <label className={styles.seder}>Taharos<input key={Math.random()} value="Taharos" type="checkbox" defaultChecked={sedarim.Taharos}></input></label>
                 </div>
-            }
+            
             
             
             <div className={styles.formRow}>
