@@ -15,7 +15,7 @@ function SederAccordion(props) {
         </div>
 
         {expanded && 
-        <div>
+        <div className={styles.masechtosColumn}>
             {props.masechtos.map((obj, i) => {
                 let masechta = Object.keys(obj)[0]
                 return (

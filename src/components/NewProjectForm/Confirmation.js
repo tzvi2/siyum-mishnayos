@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from '../../css/NewProjectForm.module.css'
-import {Link} from 'react-router-dom'
 import QRCode from 'qrcode.react'
 import {useDBcontext} from '../../contexts/DBcontext'
 

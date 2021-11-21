@@ -1,9 +1,8 @@
 import React, {useState, useEffect, useContext} from "react";
 import {db} from '../firebaseConfig'
-import {setDoc, getDoc, doc, addDoc, collection, where, updateDoc, query, FieldPath, Timestamp, serverTimestamp, onSnapshot} from 'firebase/firestore'
-import {shas} from '../shas'
+import {getDoc, doc, addDoc, collection, updateDoc, serverTimestamp, onSnapshot} from 'firebase/firestore'
 import {useParams} from 'react-router-dom'
-import { Component } from "react";
+
 
 
 const DBcontext = React.createContext()
@@ -23,9 +22,6 @@ export function DBprovider({children}) {
     const [currentProjectLink, setCurrentProjectLink] = useState("")
 
     const [sedarim, setSedarim] = useState({})
-    //let sedarim = {}
-
-    // console.log('sedarim', sedarim)
 
     const saveProject = async (proj) => {  
         const newDocToSave = await addDoc(collection(db, "projects"), {
@@ -33,8 +29,8 @@ export function DBprovider({children}) {
             createdAt: serverTimestamp()
         })
         setCurrentId(newDocToSave.id)
-        const update = await updateDoc(newDocToSave, {
-            "link" : `http://localhost:3000/viewprojects:${newDocToSave.id}`
+        await updateDoc(newDocToSave, {
+            "link" : `${window.location.origin}/viewproject/${newDocToSave.id}`
         })
         const savedNewDoc = await getDoc(newDocToSave)
         if (savedNewDoc.exists()) {
@@ -42,16 +38,6 @@ export function DBprovider({children}) {
         } else {
             return console.log("error getting new saved doc")
         }
-    }
-
-    const saveProjectLink = async (id) => {
-        console.log('saving project link. id:', id)
-        console.log('save')
-        const projRef = doc(db, "projects", id)
-        const update = await updateDoc(projRef, {
-            "link" : `${window.location.href}${id}`
-        })
-        return update
     }
 
     const getProject = async (id) => {
@@ -112,14 +98,9 @@ export function DBprovider({children}) {
         currentProject,
         setCurrentProject,
         setProject,
-        saveProjectLink,
         getProject,
         setCompleteStatus
     }
-    
-    useEffect(() => {
-        console.log(sedarim)
-    }, [sedarim])
 
     return (
         <DBcontext.Provider value={value}>

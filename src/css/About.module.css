@@ -33,3 +33,9 @@ h3 {
 .right {
     align-self: flex-end;
 }
+
+@media screen and (min-width: 760px) {
+    .flexColumn p {
+        margin: 1%;
+    }
+}

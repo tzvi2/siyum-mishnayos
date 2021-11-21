@@ -1,11 +1,10 @@
-
 form {
-    width: 100%;
+    width: 99%;
     color: var(--shade4);
 }
 
 .projectForm {
-    margin-top: 10vh;
+    margin-top: 5vh;
 }
 
 input, select, textarea, .selector {

@@ -7,7 +7,6 @@ import DBprovider from './contexts/DBcontext';
 import ViewProject from './components/ViewProject';
 import NewProjectForm from './components/NewProjectForm';
 import About from './components/About';
-import Header from './components/Header'
 
 
 ReactDOM.render(

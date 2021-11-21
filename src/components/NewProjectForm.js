@@ -1,37 +1,18 @@
 import React, {useState, useEffect, useRef} from 'react'
 import styles from '../css/NewProjectForm.module.css'
-import ViewProject from '../components/ViewProject'
 import CreateProject from './NewProjectForm/CreateProject'
 import ReviewProject from './NewProjectForm/ReviewProject'
 import Confirmation from './NewProjectForm/Confirmation'
-import {db} from '../firebaseConfig'
 import Header from '../components/Header'
-import {doc, setDoc, collection, addDoc} from 'firebase/firestore'
-import {shas} from '../shas'
-import {Route, Routes, Link, useHistory} from 'react-router-dom'
 import { useDBcontext } from '../contexts/DBcontext'
-import QRCode from 'qrcode.react'
-
-
-
 
 function NewProjectForm() {
-
     
     const [title, setTitle] = useState("")
     const [timePeriod, setTimePeriod] = useState("1 week")
     const [stage, setStage] = useState(1)
-    //const [selectedSedarim, setSelectedSedarim] = useState(["Zeraim"])
-    let selectedSedarim = {
-        Zeraim: true,
-        Moed: false,
-        Nashim: false,
-        Nezikin: false,
-        Kadshim: false,
-        Taharos: false
-    }
 
-    const {saveProject, getProject, setProject, setCurrentId, saveProjectLink, setCurrentProjectLink, setCurrentProject, currentProjectLink, sedarim, currentId, currentProject} = useDBcontext()
+    const {saveProject, setCurrentProject, sedarim} = useDBcontext()
     
     const newProject = {
         title: title,
@@ -51,12 +32,7 @@ function NewProjectForm() {
         }
     }
 
-    useEffect(() => {
-        //console.log(selectedSedarim)
-    }, [selectedSedarim])
-
     return (
-        
         <div className="App">
             <Header />
             <div className="container">
@@ -72,7 +48,6 @@ function NewProjectForm() {
                     stage={stage}
                     setStage={setStage}
                     newProject={newProject}
-                    selectedSedarim={selectedSedarim}
                 />
                 </>}
     
@@ -81,7 +56,6 @@ function NewProjectForm() {
                 <ReviewProject 
                     title={title}
                     timePeriod={timePeriod}
-                    selectedSedarim={selectedSedarim}
                     stage={stage}
                     setStage={setStage}
                 />
@@ -89,9 +63,7 @@ function NewProjectForm() {
 
                 {stage === 3 && <>
                 <h2>Your project was created.</h2>
-                <Confirmation 
-                    selectedSedarim={selectedSedarim}
-                />
+                <Confirmation />
                 </>}
             </form>
             </div>

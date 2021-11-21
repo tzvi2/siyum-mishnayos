@@ -10,9 +10,6 @@ function MasechtaCard(props) {
     const [learner, setLearner] = useState("")
     const [nameSwitch, setNameSwitch] = useState(false)
     const [signingUp, setSigningUp] = useState(false)
-    //const [signedUp, setSignedUp] = useState(false)
-    const [checked, setChecked] = useState(false)
-    const [seconds, setSeconds] = useState(4)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -33,7 +30,6 @@ function MasechtaCard(props) {
         e.preventDefault()
         try {
             await setCompleteStatus(currentId, props.seder, props.masechta, e.target.checked)
-            //setChecked(!checked)
         } catch (error) {
             console.log(error)
         }  

@@ -15,30 +15,16 @@ function ViewProject() {
 
     const {getProject, currentProject, setCurrentProject, setCurrentId, signUp, currentId, currentProjectLink} = useDBcontext()
 
-    const sederStrs = []
-    const masechtaObjs = []
-
     const checkParams = async () => {
         if (window.location.pathname != "/viewproject") {
-            // if (localStorage.getItem("current ID")) {
-            //     try {
-            //         const project = await(getProject(localStorage.getItem("current ID")))
-            //         setCurrentProject(project)
-            //     } catch (error) {
-            //         console.log('errrerer', error)
-            //     }
-            // } else {
                 let id = params.projectId
                 setCurrentId(id)
-                // localStorage.removeItem("current ID")
-                // localStorage.setItem("current ID", id)
                 try {
                     const project = await(getProject(id))
                     setCurrentProject(project)
                 } catch (err) {
                     console.log('err', err)
                 }
-            //} 
         }
     }
 
@@ -50,9 +36,9 @@ function ViewProject() {
     return (
         <>
         <Header />
-        <div className={`${styles.flexColumn} ${styles.banner}`}>
-            <h2>{currentProject?.title}</h2>
-            <h2>{currentProject?.timePeriod}</h2> 
+        <div className={`${styles.banner}`}>
+            <h3>{currentProject?.title}</h3>
+            <h3>{currentProject?.timePeriod}</h3> 
         </div>
 
         <div className={styles.flexColumn}>
