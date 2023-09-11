@@ -19,7 +19,7 @@ ReactDOM.render(
         <Route path='/viewproject' element={<ViewProject />}>
           <Route path=":projectId" element={<ViewProject />} />
         </Route>
-        <Route path="about" element={<About />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       </React.StrictMode>
     </BrowserRouter>
