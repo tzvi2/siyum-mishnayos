@@ -14,7 +14,7 @@ ReactDOM.render(
     <BrowserRouter>
       <React.StrictMode>
       <Routes>
-        <Route path='/' element={<App />} />
+        <Route path='/Siyum-Mishnayos' element={<App />} />
         <Route path='/newproject' element={<NewProjectForm />} />
         <Route path='/viewproject' element={<ViewProject />}>
           <Route path=":projectId" element={<ViewProject />} />
