@@ -11,6 +11,7 @@ import TextAnimation from './components/TextAnimation';
 
 function App() {
   return (
+    
     <div className="App">
       <Header />
       <TextAnimation />
