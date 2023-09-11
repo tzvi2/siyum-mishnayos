@@ -15,11 +15,11 @@ ReactDOM.render(
       <React.StrictMode>
       <Routes>
         <Route path='/Siyum-Mishnayos' element={<App />} />
-        <Route path='/newproject' element={<NewProjectForm />} />
-        <Route path='/viewproject' element={<ViewProject />}>
+        <Route path='Siyum-Mishnayos/newproject' element={<NewProjectForm />} />
+        <Route path='Siyum-Mishnayos/viewproject' element={<ViewProject />}>
           <Route path=":projectId" element={<ViewProject />} />
         </Route>
-        <Route path="/about" element={<About />} />
+        <Route path="Siyum-Mishnayos/about" element={<About />} />
       </Routes>
       </React.StrictMode>
     </BrowserRouter>
