@@ -6,7 +6,7 @@ import styles from '../css/Header.module.css'
 function Header() {
     return (
       <div className={styles.header}>
-        <Link to="/Siyum-Mishnayos"><h1>Siyum Mishnayos</h1></Link>  
+        <Link to="/"><h1>Siyum Mishnayos</h1></Link>  
      </div>
   )
 }

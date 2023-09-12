@@ -11,15 +11,15 @@ import About from './components/About';
 
 ReactDOM.render(
   <DBprovider>
-    <BrowserRouter >
+    <BrowserRouter forceRefresh={true}>
       <React.StrictMode>
       <Routes>
-        <Route path='/Siyum-Mishnayos' element={<App />} />
+        <Route path='/' element={<App />} />
         <Route path='/newproject' element={<NewProjectForm />} />
         <Route path='/viewproject' element={<ViewProject />}>
           <Route path=":projectId" element={<ViewProject />} />
         </Route>
-        <Route path="Siyum-Mishnayos/about" element={<About />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       </React.StrictMode>
     </BrowserRouter>
