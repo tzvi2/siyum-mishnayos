@@ -11,7 +11,7 @@ import About from './components/About';
 
 ReactDOM.render(
   <DBprovider>
-    <BrowserRouter forceRefresh={true}>
+    <BrowserRouter >
       <React.StrictMode>
       <Routes>
         <Route path='/Siyum-Mishnayos' element={<App />} />
