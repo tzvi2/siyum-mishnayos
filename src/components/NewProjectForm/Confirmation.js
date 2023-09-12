@@ -20,7 +20,7 @@ function Confirmation(props) {
             </label>
 
             <label className={`${styles.formRow} ${styles.centered}`}>Your project's QR code:</label>
-            <QRCode className={`${styles.formRow} ${styles.centered}`} value={`${window.location.origin}siyum-mishnayos/viewproject/${currentId}`} />
+            <QRCode className={`${styles.formRow} ${styles.centered}`} value={`${window.location.origin}/siyum-mishnayos/viewproject/${currentId}`} />
             
             <div className={`${styles.formRow} ${styles.bottom}`}>
                 <a className={styles.viewBtn} href={`${window.location.origin}/siyum-mishnayos/viewproject/${currentId}`} onClick={() => log()}>View your project</a> 
