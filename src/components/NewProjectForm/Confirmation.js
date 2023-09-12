@@ -4,6 +4,9 @@ import QRCode from 'qrcode.react'
 import {useDBcontext} from '../../contexts/DBcontext'
 
 function Confirmation(props) {
+    function log () {
+        console.log(`${window.location.origin}/siyum-mishnayos/viewproject/${currentId}`)
+    }
     const {currentProject, sedarim, currentId} = useDBcontext()
     return (
         <>
@@ -17,10 +20,10 @@ function Confirmation(props) {
             </label>
 
             <label className={`${styles.formRow} ${styles.centered}`}>Your project's QR code:</label>
-            <QRCode className={`${styles.formRow} ${styles.centered}`} value={`${window.location.origin}/viewproject/${currentId}`} />
+            <QRCode className={`${styles.formRow} ${styles.centered}`} value={`${window.location.origin}siyum-mishnayos/viewproject/${currentId}`} />
             
             <div className={`${styles.formRow} ${styles.bottom}`}>
-                <a className={styles.viewBtn} href={`${window.location.origin}/viewproject/${currentId}`}>View your project</a> 
+                <a className={styles.viewBtn} href={`${window.location.origin}/siyum-mishnayos/viewproject/${currentId}`} onClick={() => log()}>View your project</a> 
             </div>
             
         </div>  
