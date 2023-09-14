@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import DBprovider from './contexts/DBcontext';
 import ViewProject from './components/ViewProject';
 import NewProjectForm from './components/NewProjectForm';
@@ -11,7 +11,7 @@ import About from './components/About';
 
 ReactDOM.render(
   <DBprovider>
-    <BrowserRouter basename='/siyum-mishnayos'>
+    <HashRouter basename='/siyum-mishnayos'>
       <React.StrictMode>
       <Routes>
         <Route path='/' element={<App />} />
@@ -22,7 +22,7 @@ ReactDOM.render(
         <Route path="/about" element={<About />} />
       </Routes>
       </React.StrictMode>
-    </BrowserRouter>
+    </HashRouter>
   </DBprovider>
   ,
   document.getElementById('root')
