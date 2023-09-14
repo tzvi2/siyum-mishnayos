@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import DBprovider from './contexts/DBcontext';
 import ViewProject from './components/ViewProject';
 import NewProjectForm from './components/NewProjectForm';
@@ -11,18 +11,17 @@ import About from './components/About';
 
 ReactDOM.render(
   <DBprovider>
-    <HashRouter basename='/siyum-mishnayos'>
+    <BrowserRouter basename='/siyum-mishnayos'>
       <React.StrictMode>
       <Routes>
         <Route path='/' element={<App />} />
         <Route path='/newproject' element={<NewProjectForm />} />
-        <Route path='/viewproject' element={<ViewProject />}>
-          <Route path=":projectId" element={<ViewProject />} />
-        </Route>
+        <Route path='/viewproject' element={<ViewProject />} />
+          <Route path='/viewproject/:projectId' element={<ViewProject />} />
         <Route path="/about" element={<About />} />
       </Routes>
       </React.StrictMode>
-    </HashRouter>
+    </BrowserRouter>
   </DBprovider>
   ,
   document.getElementById('root')
